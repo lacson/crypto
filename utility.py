@@ -8,7 +8,7 @@ helper functions for this crypto schtick
 import math
 
 
-def euler(num: int) -> int:
+def euler(num: int, debug=False) -> int:
     '''
     Given a number num, calculates
     Euler phi function for num.
@@ -20,6 +20,9 @@ def euler(num: int) -> int:
     :param num: number to calculate function for
     :return: result of euler phi function
     '''
-    return len([i for i in range(2, num) if math.gcd(i, num) == 1]) + 1
+    ans = [i for i in range(2, num + 1) if math.gcd(i, num) == 1]
+    if debug:
+        print([1] + ans)
+    return len(ans) + 1
 
     
