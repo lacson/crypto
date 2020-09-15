@@ -1,3 +1,10 @@
+# don't push graded work
 assignments/
 
+# no python artifacts
+__pycache__/
 *.pyc
+
+# no fs/editor artifacts
+.vscode/
+.DS_Store
