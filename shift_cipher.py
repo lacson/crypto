@@ -15,7 +15,6 @@ def decrypt(msg: str, key: int) -> str:
     """
     Decrypts given msg using key and returns
     decrypted message.
-    (Derived from an assignment I did for CS 4264)
 
     :param msg: message to decrypt
     :param key: key to decrypt with
@@ -35,7 +34,6 @@ def encrypt(msg: str, key: int) -> str:
     """
     Encrypts given msg using key and returns
     encrypted message.
-    (Derived from an assignment I did for CS 4264)
 
     :param msg: message to encrypt
     :param key: key to encrypt with
