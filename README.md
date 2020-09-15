@@ -1,5 +1,5 @@
 # crypto
-A small cryptography library
+A small cryptography library  
 Author: Jonathan Lacson (@lacson)
 
 ## Ciphers Done
