@@ -43,12 +43,16 @@ def mult_inv(bound: int) -> dict:
     ret[bound-1] = bound-1
 
     # iterate through the remaining values
-    for i in range(2, bound-1):
-        if math.gcd(i, bound) == 1 and i not in ret.values():
+    vals = list(range(2, bound-1))
+    for i in vals:
+        if math.gcd(i, bound) == 1:
             # this only works on Py3.8+!
             ans = pow(i, -1, bound)
             ret[i] = ans
+            # do the inverse too for faster reverse lookup
             ret[ans] = i
+            # remove the inverse so we don't iterate on it
+            vals.remove(ans)
 
     # return a sorted one
     return {key: value for key, value in sorted(ret.items(), key=lambda item: item[0])}
