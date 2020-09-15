@@ -1,7 +1,10 @@
 # crypto
 A small cryptography library
+Author: Jonathan Lacson (@lacson)
 
 ## Ciphers Done
+More will be done as the course progresses.
+
 - Shift
 - Substitution
 - Affine
@@ -17,4 +20,4 @@ reliability at this stage of development. I'll go back and provide
 test scripts for them one day...
 
 - Euler's Totient
-- Modulo Multiplicative Inverse
+- Modular Multiplicative Inverse
