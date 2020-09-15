@@ -6,12 +6,13 @@ affine_cipher.py
 '''
 import string
 import math
+from utility import mult_inv
 
 # declare some constants here
 ALPHABET = string.ascii_uppercase
 ALPHASET = set(ALPHABET)
 # wasn't sure how to procedurally generate this?
-VALID_A = {1:1, 3:9, 9:3, 5:21, 21:5, 7:15, 15:7, 11:19, 19:11, 17:23, 23:17, 25:25}
+VALID_A = mult_inv(len(ALPHABET))
 
 def encrypt(msg: str, a: int, b: int) -> str:
     '''
