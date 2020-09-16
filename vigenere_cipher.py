@@ -6,49 +6,11 @@ vigenere_cipher.py
 '''
 import string
 import itertools
-from utility import split
+from utility import split, encrypt_single, decrypt_single
 
 # define some constants
 alphabet = string.ascii_uppercase
 alphaset = set(alphabet)
-
-
-def decrypt_single(msg: str, key: int) -> str:
-    """
-    Decrypts given msg using key and returns
-    decrypted message.
-
-    :param msg: message to decrypt
-    :param key: key to decrypt with
-    :return: decrypted message
-    """
-    ret = ""
-    for cha in msg.upper():
-        if cha not in alphaset:
-            ret += cha
-        else:
-            ret += alphabet[(alphabet.index(cha) - key) % len(alphabet)]
-
-    return ret
-
-
-def encrypt_single(msg: str, key: int) -> str:
-    """
-    Encrypts given msg using key and returns
-    encrypted message.
-
-    :param msg: message to encrypt
-    :param key: key to encrypt with
-    :return: encrypted message
-    """
-    ret = ""
-    for cha in msg.upper():
-        if cha not in alphaset:
-            ret += cha
-        else:
-            ret += alphabet[(alphabet.index(cha) + key) % len(alphabet)]
-
-    return ret
 
 
 def decrypt(msg: str, key: str) -> str:

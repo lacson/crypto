@@ -6,6 +6,10 @@ helper functions for this crypto schtick
 @author lacson
 '''
 import math
+import string
+
+alphabet = string.ascii_uppercase
+alphaset = set(alphabet)
 
 
 def euler(num: int, debug=False) -> int:
@@ -56,6 +60,44 @@ def mult_inv(bound: int) -> dict:
 
     # return a sorted one
     return {key: value for key, value in sorted(ret.items(), key=lambda item: item[0])}
+
+
+def decrypt_single(msg: str, key: int) -> str:
+    """
+    Decrypts given msg using key and returns
+    decrypted message.
+
+    :param msg: message to decrypt
+    :param key: key to decrypt with
+    :return: decrypted message
+    """
+    ret = ""
+    for cha in msg.upper():
+        if cha not in alphaset:
+            ret += cha
+        else:
+            ret += alphabet[(alphabet.index(cha) - key) % len(alphabet)]
+
+    return ret
+
+
+def encrypt_single(msg: str, key: int) -> str:
+    """
+    Encrypts given msg using key and returns
+    encrypted message.
+
+    :param msg: message to encrypt
+    :param key: key to encrypt with
+    :return: encrypted message
+    """
+    ret = ""
+    for cha in msg.upper():
+        if cha not in alphaset:
+            ret += cha
+        else:
+            ret += alphabet[(alphabet.index(cha) + key) % len(alphabet)]
+
+    return ret
 
 
 def split(length: int, text: str) -> list():
