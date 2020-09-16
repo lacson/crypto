@@ -56,3 +56,28 @@ def mult_inv(bound: int) -> dict:
 
     # return a sorted one
     return {key: value for key, value in sorted(ret.items(), key=lambda item: item[0])}
+
+
+def split(length: int, text: str) -> list():
+    '''
+    Given a length, bins a string
+    into a list of substrings.
+
+    e.g. if we called split(3, "abc")
+    we would get ['a', 'b', 'c']
+
+    :param length: how long to split by
+    :param text: text to split
+    :return: list of strs
+    '''
+    # make the list to return
+    ret = [""] * length
+
+    # iterate through
+    for idx, cha in enumerate(text):
+        ret[idx % length] += cha
+
+    # return it
+    return ret
+
+

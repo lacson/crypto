@@ -6,32 +6,11 @@ vigenere_cipher.py
 '''
 import string
 import itertools
+from utility import split
 
 # define some constants
 alphabet = string.ascii_uppercase
 alphaset = set(alphabet)
-
-def split(length: int, text: str) -> list():
-    '''
-    Given a length, bins a string
-    into a list of substrings.
-
-    e.g. if we called split(3, "abc")
-    we would get ['a', 'b', 'c']
-
-    :param length: how long to split by
-    :param text: text to split
-    :return: list of strs
-    '''
-    # make the list to return
-    ret = [""] * length
-
-    # iterate through
-    for idx, cha in enumerate(text):
-        ret[idx % length] += cha
-
-    # return it
-    return ret
 
 
 def decrypt_single(msg: str, key: int) -> str:
