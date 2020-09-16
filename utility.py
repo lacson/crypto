@@ -81,3 +81,33 @@ def split(length: int, text: str) -> list():
     return ret
 
 
+def index_coin(msg: str) -> float:
+    '''
+    Calculates the index of coincedence for a string.
+
+    :param msg: string to measure
+    :return: index of coincendence (float)
+    '''
+    # strip the string of whitespace and numbers
+    # ideally we don't feed garbage but we should safeguard
+    stripped_msg = "".join([cha for cha in msg.upper() if cha.isalpha()])
+
+    # make a dictionary:
+    counts = {}
+
+    # iterate through the string
+    for cha in stripped_msg:
+        try:
+            counts[cha]
+        except KeyError:
+            counts[cha] = 1
+        else:
+            counts[cha] += 1
+
+    # strip relevant values
+    numerator = 0
+    vals = [v for v in counts.values() if v >= 2]
+    for v in vals:
+        numerator += (v * (v-1))
+    
+    return numerator / (len(msg) * (len(msg) - 1))
