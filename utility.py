@@ -123,19 +123,30 @@ def split(length: int, text: str) -> list():
     return ret
 
 
-def index_coin(msg: str) -> float:
+def count_chars(msg: str, prefill=True) -> dict:
     '''
-    Calculates the index of coincedence for a string.
+    Given a string, counts the number of times 
+    each alphabetical character occurs in it:
 
-    :param msg: string to measure
-    :return: index of coincendence (float)
+    e.g. "abc" -> {a: 1, b: 1, c: 1}.
+
+    Optionally, we can also prefill so that all
+    alphabetical characters appear in the dict:
+
+    e.g. "ab" -> {a: 1, b: 1, c: 0, d: 0, ... z: 0}
+
+    :param msg: string to count
+    :return: dictionary with alphabet counts
     '''
     # strip the string of whitespace and numbers
     # ideally we don't feed garbage but we should safeguard
     stripped_msg = "".join([cha for cha in msg.upper() if cha.isalpha()])
 
     # make a dictionary:
-    counts = {}
+    if prefill:
+        counts = {K: 0 for K in alphabet}
+    else:
+        counts = {}
 
     # iterate through the string
     for cha in stripped_msg:
@@ -145,6 +156,19 @@ def index_coin(msg: str) -> float:
             counts[cha] = 1
         else:
             counts[cha] += 1
+
+    return counts
+
+
+def index_coin(msg: str) -> float:
+    '''
+    Calculates the index of coincedence for a string.
+
+    :param msg: string to measure
+    :return: index of coincendence (float)
+    '''
+    # get the counts
+    counts = count_chars(msg)
 
     # strip relevant values
     numerator = 0
