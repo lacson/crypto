@@ -7,9 +7,12 @@ helper functions for this crypto schtick
 '''
 import math
 import string
+from collections import deque
 
 alphabet = string.ascii_uppercase
 alphaset = set(alphabet)
+alphabet_freq = [.082, .015, .028, .043, .127, .022, .020, .061, .070, .002, .008, .040, .024, .067, \
+    .075, .019, .001, .060, .063, .091, .028, .010, .023, .001, .020, .001]
 
 
 def euler(num: int, debug=False) -> int:
@@ -177,3 +180,30 @@ def index_coin(msg: str) -> float:
         numerator += (v * (v-1))
     
     return numerator / (len(msg) * (len(msg) - 1))
+
+
+def find_dot_prods(msg: str) -> list:
+    '''
+    Finds the individual vectors and dot products needed to
+    figure out the key of a given substring.
+
+    :param msg: message to work on
+    :return: list of dot products
+    '''
+    # get frequency table for substring, throw away the keys
+    original_counts = list(count_chars(msg).values())
+
+    # make a list of dot products to return
+    ind_dot_prods = []
+
+    # now shift and do the dot product
+    for shift in range(26):
+        # use deques to make rotating cleaner and faster
+        tmp_deque = deque(original_counts)
+        tmp_deque.rotate(-shift)
+        # find the dot product
+        dot_prod = (sum([i * j for i, j in zip(alphabet_freq, tmp_deque)]) / len(msg)) * 100
+        ind_dot_prods.append(dot_prod)
+
+    # return the list of dot products
+    return ind_dot_prods
