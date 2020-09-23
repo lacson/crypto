@@ -103,6 +103,20 @@ def encrypt_single(msg: str, key: int) -> str:
     return ret
 
 
+def equal_split(length: int, text: str) -> list():
+    '''
+    Given a string, creates equal substrings.
+
+    e.g. if we called equal_split(4, "abcdefgh")
+    we would get ["abcd", "efgh"]
+
+    :param length: how long to split
+    :param text: text to split
+    :return: split list of strs
+    '''
+    return [text[i:i+length] for i in range(0, len(text), length)]
+
+
 def split(length: int, text: str) -> list():
     '''
     Given a length, bins a string
@@ -139,6 +153,7 @@ def count_chars(msg: str, prefill=True) -> dict:
     e.g. "ab" -> {a: 1, b: 1, c: 0, d: 0, ... z: 0}
 
     :param msg: string to count
+    :param prefill: if true, populate the dict from A-Z first
     :return: dictionary with alphabet counts
     '''
     # strip the string of whitespace and numbers
