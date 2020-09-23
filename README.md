@@ -9,6 +9,8 @@ More will be done as the course progresses.
 - Substitution
 - Affine
 - Vigenere
+- Permutation
+- Hill (requires Numpy!)
 
 ## Mathematical Utilities Provided
 I know that [sympy](https://www.sympy.org/en/index.html) probably
@@ -21,3 +23,4 @@ test scripts for them one day...
 
 - Euler's Totient
 - Modular Multiplicative Inverse
+- Index of Coincedence
