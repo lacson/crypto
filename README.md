@@ -11,6 +11,7 @@ More will be done as the course progresses.
 - Vigenere
 - Permutation
 - Hill (requires Numpy!)
+- Autokey
 
 ## Mathematical Utilities Provided
 I know that [sympy](https://www.sympy.org/en/index.html) probably
